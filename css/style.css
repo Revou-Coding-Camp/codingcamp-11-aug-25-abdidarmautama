@@ -1,0 +1,10 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+main {
+    margin-top: 88px !important; /* Sesuaikan dengan tinggi header (h-20 = 80px + padding) */
+}
