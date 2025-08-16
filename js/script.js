@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Form Message Us
     const form = document.querySelector("form");
     const namaInput = document.getElementById("nama");
     const tanggalInput = document.getElementById("tanggal");
@@ -28,5 +29,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Pesan:</strong> ${pesanInput.value}</p>
             </div>
         `;
+    });
+
+    // Scroll offset agar judul section tidak tertutup header
+    function scrollToSectionWithOffset(id) {
+        var header = document.querySelector('header');
+        var section = document.getElementById(id);
+        if (header && section) {
+            var headerHeight = header.offsetHeight;
+            var sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: sectionTop - headerHeight - 8, // 8px extra space
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var href = link.getAttribute('href');
+            if (href === '#Profile' || href === '#Portofolio') {
+                e.preventDefault();
+                scrollToSectionWithOffset(href.substring(1));
+            }
+        });
     });
 });
